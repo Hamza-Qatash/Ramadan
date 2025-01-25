@@ -1,0 +1,33 @@
+@import "./base.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#app {
+  @apply container mx-auto xl:px-14;
+}
+
+body {
+  @apply bg-background;
+  font-family: "Nunito", sans-serif;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+:root {
+  --primary: 255, 94, 142;
+  --secondary: 1, 105, 178;
+  --white: 255, 255, 255;
+  --black: 0, 0, 0;
+}
+
+.dark {
+  --primary: 255, 105, 180;
+  --secondary: 30, 72, 112;
+  --white: 234, 234, 234;
+  --black: 148, 163, 184;
+  --background: 18, 18, 20;
+  --glow-primary: 255, 94, 142;
+  --glow-secondary: 1, 105, 178;
+}
