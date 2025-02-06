@@ -48,7 +48,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 // Import core Vue functionalities
 import { computed } from "vue";
 

@@ -1,20 +1,25 @@
 import { defineStore } from "pinia";
-import type { NavigationState, MenuItem } from "@/types/navigation.types.ts";
+import { ref, computed } from "vue";
+import type { MenuItem } from "@/types/navigation.types.ts";
+import {
+  MENU_ITEM_HOME,
+  MENU_ITEM_ABOUT,
+  MENU_ITEM_CALENDAR,
+  MENU_ITEM_BLOG,
+  MENU_ITEM_CONTACT,
+} from "@/constants/menuItems";
 
-export const useNavigationStore = defineStore("navigation", {
-  // Typed state
-  state: (): NavigationState => ({
-    menuItems: [
-      { name: "home", path: "/" },
-      { name: "about", path: "/about" },
-      { name: "calendar", path: "/calendar" },
-      { name: "blog", path: "/blog" },
-      { name: "contact", path: "/contact" },
-    ],
-  }),
+export const useNavigationStore = defineStore("navigation", () => {
 
-  getters: {
-    getMenuItems: (state): MenuItem[] => state.menuItems,
-    menuItemsLength: (state): number => state.menuItems.length,
-  },
+  const menuItems = ref<MenuItem[]>([
+    { name: MENU_ITEM_HOME, path: "/" },
+    { name: MENU_ITEM_ABOUT, path: "/about" },
+    { name: MENU_ITEM_CALENDAR, path: "/calendar" },
+    { name: MENU_ITEM_BLOG, path: "/blog" },
+    { name: MENU_ITEM_CONTACT, path: "/contact" },
+  ]);
+
+  const menuItemsLength = computed(() => menuItems.value.length);
+
+  return { menuItems, menuItemsLength };
 });
