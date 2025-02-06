@@ -34,7 +34,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 // Import composables
 import { useLocale } from "@/composables/useLocale";
 
@@ -50,7 +50,7 @@ const { locale } = useLocale();
 }
 
 .burger__menu--svg line {
-  stroke: #192a6b;
+  stroke: rgb(var(--black));
   stroke-dasharray: 100%;
   stroke-dashoffset: 0%;
   transition: transform 0.3s, stroke-dashoffset 0.4s;

@@ -17,7 +17,7 @@
         <!-- Desktop Menu -->
         <ul class="flex justify-center gap-0 lg:gap-5">
           <li
-            v-for="(item, index) in getMenuItems"
+            v-for="(item, index) in menuItems"
             :key="item.name"
             :class="[
               { active: route.path === item.path },
@@ -52,7 +52,7 @@
       <!-- Mobile Menu -->
       <ul :class="[!isMenuOpen ? 'hidden' : 'flex', 'mobile__menu']">
         <li
-          v-for="(item, index) in getMenuItems"
+          v-for="(item, index) in menuItems"
           :key="item.name"
           @click="closeMenu"
           :class="[
@@ -89,7 +89,7 @@
   </header>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 // Import core Vue functionalities
 import { computed } from "vue";
 
@@ -102,8 +102,8 @@ import { useRoute } from "vue-router";
 import { storeToRefs } from "pinia";
 
 // Import Pinia stores
-import { useMobileMenuStore } from "@/stores/mobileMenu.ts";
-import { useNavigationStore } from "@/stores/navigationStore.ts";
+import { useMobileMenuStore } from "@/stores/mobileMenu";
+import { useNavigationStore } from "@/stores/navigationStore";
 
 // Import composables
 import { useLocale } from "@/composables/useLocale";
@@ -115,7 +115,7 @@ const { closeMenu, toggleMenu } = mobileStore;
 
 // Navigation logic
 const navigationStore = useNavigationStore();
-const { menuItemsLength, getMenuItems } = storeToRefs(navigationStore);
+const { menuItems, menuItemsLength } = storeToRefs(navigationStore);
 
 // Route logic
 const route = useRoute();
